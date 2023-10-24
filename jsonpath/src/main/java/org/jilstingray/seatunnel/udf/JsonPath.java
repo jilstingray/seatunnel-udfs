@@ -20,6 +20,7 @@ package org.jilstingray.seatunnel.udf;
 import com.google.auto.service.AutoService;
 import org.apache.seatunnel.api.table.type.BasicType;
 import org.apache.seatunnel.api.table.type.SeaTunnelDataType;
+import org.apache.seatunnel.api.table.type.SeaTunnelRow;
 import org.apache.seatunnel.transform.sql.zeta.ZetaUDF;
 
 import java.util.List;
@@ -39,11 +40,9 @@ public class JsonPath implements ZetaUDF {
 
     @Override
     public Object evaluate(List<Object> args) {
-        String json = (String) args.get(0);
+        SeaTunnelRow row = (SeaTunnelRow) args.get(0);
+        String json = (String) row.getField(0);
         String path = (String) args.get(1);
-        if (json == null || path == null) {
-            return null;
-        }
         List<String> values = com.jayway.jsonpath.JsonPath.read(json, path);
         return values.get(0);
     }
