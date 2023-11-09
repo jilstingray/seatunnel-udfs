@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jilstingray.seatunnel.udf</groupId>
-    <artifactId>jsonpath-udf</artifactId>
+    <artifactId>uuid-udf</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -16,7 +16,6 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <auto-service.version>1.1.1</auto-service.version>
         <doxia-site-renderer.version>1.8</doxia-site-renderer.version>
-        <json-path.version>2.7.0</json-path.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-site-plugin.version>3.7</maven-site-plugin.version>
     </properties>
@@ -32,11 +31,6 @@
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>seatunnel-api</artifactId>
             <version>${revision}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jayway.jsonpath</groupId>
-            <artifactId>json-path</artifactId>
-            <version>${json-path.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.auto.service</groupId>
@@ -75,4 +69,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
