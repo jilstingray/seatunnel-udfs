@@ -43,9 +43,6 @@ public class FromUnixtimeUDF implements ZetaUDF {
         if (args.size() != 1) {
             throw new IllegalArgumentException("FROM_UNIXTIME() requires exactly one argument");
         }
-        if (!(args.get(0) instanceof Long)) {
-            throw new IllegalArgumentException("FROM_UNIXTIME() requires a long argument");
-        }
         long timestamp = (long) args.get(0);
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(timestamp * 1000));
     }
