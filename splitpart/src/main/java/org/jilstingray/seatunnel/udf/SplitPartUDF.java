@@ -38,6 +38,7 @@ public class SplitPartUDF implements ZetaUDF {
 
     /**
      * SPLIT_PART
+     *
      * @param args string, delimiter, index
      * @return value
      */
@@ -50,8 +51,11 @@ public class SplitPartUDF implements ZetaUDF {
         String delimiter = (String) args.get(1);
         int index = (int) args.get(2);
         String[] split = ((String) field).split(delimiter, -1);
-        if (index < 0 || index >= split.length) {
+        if (index < 0) {
             throw new IllegalArgumentException("SPLIT_PART() index out of bounds");
+        }
+        if (index >= split.length) {
+            return "";
         }
         return split[index];
     }
