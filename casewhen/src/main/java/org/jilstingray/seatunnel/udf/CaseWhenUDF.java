@@ -22,6 +22,7 @@ import org.apache.seatunnel.api.table.type.SeaTunnelDataType;
 import org.apache.seatunnel.transform.sql.zeta.ZetaUDF;
 
 import java.util.List;
+import java.util.Objects;
 
 @AutoService(ZetaUDF.class)
 public class CaseWhenUDF implements ZetaUDF {
@@ -53,7 +54,7 @@ public class CaseWhenUDF implements ZetaUDF {
         for (int i = 1; i < args.size() - 1; i += 2) {
             Object condition = args.get(i);
             Object value = args.get(i + 1);
-            if (field.equals(condition)) {
+            if (Objects.equals(field, condition)) {
                 return value;
             }
         }
